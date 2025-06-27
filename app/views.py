@@ -21,8 +21,11 @@ def home(request):
     images = services.getAllImages()  
     favourite_list = [] 
 
-    #lista de ids para comparar los favoritos ya agregados y cambiar el boton en home:
-    favourite_ids = Favourite.objects.filter(user= request.user).values_list("id",flat=True)
+    #validar la lista de favoritos para usuarios logueados o no y cambiar el boton en home:
+    if request.user.is_authenticated:
+        favourite_ids = Favourite.objects.filter(user=request.user).values_list("id", flat=True)
+    else: 
+        favourite_ids = []
 
     return render(request, 'home.html', {
         'images': images,
