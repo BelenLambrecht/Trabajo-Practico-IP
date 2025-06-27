@@ -21,9 +21,13 @@ def home(request):
     images = services.getAllImages()  
     favourite_list = [] 
 
+    #lista de ids para comparar los favoritos ya agregados y cambiar el boton en home:
+    favourite_ids = Favourite.objects.filter(user= request.user).values_list("id",flat=True)
+
     return render(request, 'home.html', {
         'images': images,
-        'favourite_list': favourite_list
+        'favourite_list': favourite_list,
+        'favourite_ids': list(favourite_ids)
     })
 
 
@@ -65,6 +69,8 @@ def filter_by_type(request):
 from django.shortcuts import redirect
 from django.contrib import messages
 
+
+# Estas funciones se usan cuando el usuario está logueado en la aplicación.
 @login_required
 def saveFavourite(request):
     if request.method == 'POST':
@@ -81,8 +87,11 @@ def saveFavourite(request):
             messages.error(request, 'Datos incompletos.')
             return redirect('home')
 
-        #FALTA validar que no se agreguen pokemones ya en la lista de favoritos 
-
+         # Validar que no se agregue duplicado
+        if Favourite.objects.filter(user=request.user, name=name).exists():
+            messages.warning(request, 'Ese Pokémon ya está en tus favoritos.')
+            return redirect("home")
+        
         # Crear el favorito
         favorito= Favourite.objects.create(
             id=item_id,
@@ -99,7 +108,6 @@ def saveFavourite(request):
 
     return redirect("home")
 
-# Estas funciones se usan cuando el usuario está logueado en la aplicación.
 
 #funcion filtra los pokemones para obtener la lista de los favoritos del usuario:
 
