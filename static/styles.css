@@ -1,9 +1,9 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700&display=swap');
 body {
-    color: #566787;
-    background: #f5f5f5;
-    font-family: 'Roboto', sans-serif;
+    color: #751775;
+    background: #fad0d0;
+    font-family: 'Rubik', sans-serif;
 }
 
 .table-responsive {
@@ -147,4 +147,27 @@ table.table td i {
   border-radius: 20px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-10px);
+}
+
+.card-img-top {
+  height: 200px;
+  object-fit: contain;
+  margin-top: 10px;
+}
+.card-title {
+  font-weight: bold;
+  font-size: 1.4rem;
+  color: #2c3e50;
+}
+
+.btn-outline-primary {
+  border-radius: 30px;
+  transition: all 0.3s ease;
+}
+.btn-outline-primary:hover {
+  background-color: #03A9F4;
+  color: #fff;
 }
