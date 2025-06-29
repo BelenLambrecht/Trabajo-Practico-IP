@@ -142,3 +142,9 @@ table.table td i {
     margin-top: 6px;
     font-size: 95%;
 }
+.card {
+  background: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
