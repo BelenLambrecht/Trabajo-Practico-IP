@@ -142,6 +142,15 @@ table.table td i {
     margin-top: 6px;
     font-size: 95%;
 }
+.table-wrapper .btn {
+    color: #fff;
+    background: #03A9F4;
+    border-radius: 20px;
+    border: none;
+    padding: 6px 20px;
+    font-size: 13px;
+    cursor: pointer;
+}
 .card {
   background: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
   border-radius: 20px;
